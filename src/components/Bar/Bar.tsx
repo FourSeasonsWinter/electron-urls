@@ -10,12 +10,13 @@ enum RequestType {
 }
 
 interface Props {
-  onSend: () => void
+  onSend: (str: string) => void
 }
 
 export default function Bar({ onSend }: Props) {
   const [isDropdownActive, setIsDropdownActive] = useState<boolean>(false)
   const [selectedType, setSelectedType] = useState<RequestType>(RequestType.GET)
+  const [url, setUrl] = useState<string>('')
 
   function handleRequestTypeClick(type: RequestType) {
     setIsDropdownActive(false)
@@ -34,8 +35,13 @@ export default function Bar({ onSend }: Props) {
         <RiArrowDropDownLine size={24} />
       </button>
       <div className='divider'></div>
-      <input type='text' placeholder='url...' />
-      <button className='send' onClick={onSend}>
+      <input
+        type='text'
+        placeholder='url...'
+        value={url}
+        onChange={(e) => setUrl(e.target.value)}
+      />
+      <button className='send' onClick={() => onSend(url)}>
         Send
       </button>
 

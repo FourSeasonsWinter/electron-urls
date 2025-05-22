@@ -8,8 +8,13 @@ if (started) {
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
-    width: 800,
+    width: 480,
     height: 600,
+    maximizable: false,
+    resizable: false,
+    autoHideMenuBar: true,
+    roundedCorners: true,
+    backgroundColor: '#0a192f',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
