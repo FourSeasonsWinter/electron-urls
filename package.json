@@ -1,8 +1,8 @@
 {
   "name": "electron-urls",
-  "productName": "electron-urls",
-  "version": "1.0.0",
-  "description": "My Electron application description",
+  "productName": "Electron URLs",
+  "version": "0.0.1",
+  "description": "Desktop app to test APIs endpoints",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
