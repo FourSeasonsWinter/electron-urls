@@ -1,0 +1,22 @@
+.request {
+  width: 100%;
+}
+
+.section-title {
+  margin-top: 4rem;
+  margin-bottom: .4rem;
+  opacity: .5;
+  font-weight: 400;
+}
+
+.json-area {
+  min-width: 100%;
+  height: 150px;
+  min-height: 150px;
+  max-height: 150px;
+  font-family: monospace;
+  outline: none;
+  padding: 10px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}

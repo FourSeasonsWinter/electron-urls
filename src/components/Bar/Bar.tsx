@@ -1,6 +1,7 @@
 import { RiArrowDropDownLine } from 'react-icons/ri'
 import { useState } from 'react'
 import './Bar.css'
+import EndpointRequest from '../../types/EndpointRequest'
 
 enum RequestType {
   GET = 'GET',
@@ -10,7 +11,7 @@ enum RequestType {
 }
 
 interface Props {
-  onSend: (str: string) => void
+  onSend: (request: EndpointRequest) => void
 }
 
 export default function Bar({ onSend }: Props) {
@@ -21,6 +22,16 @@ export default function Bar({ onSend }: Props) {
   function handleRequestTypeClick(type: RequestType) {
     setIsDropdownActive(false)
     setSelectedType(type)
+  }
+
+  function handleSendRequest() {
+    const request: EndpointRequest = {
+      url: url,
+      type: selectedType.toString(),
+      json: JSON.stringify({})
+    }
+
+    onSend(request)
   }
 
   return (
@@ -41,7 +52,7 @@ export default function Bar({ onSend }: Props) {
         value={url}
         onChange={(e) => setUrl(e.target.value)}
       />
-      <button className='send' onClick={() => onSend(url)}>
+      <button className='send' onClick={handleSendRequest}>
         Send
       </button>
 
