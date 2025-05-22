@@ -1,7 +1,6 @@
 type EndpointRequest = {
   url: string,
-  type: string,
-  json: string
+  type: string
 }
 
 export default EndpointRequest

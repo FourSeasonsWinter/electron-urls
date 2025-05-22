@@ -3,7 +3,7 @@
 }
 
 .section-title {
-  margin-top: 4rem;
+  margin-top: 2.4rem;
   margin-bottom: .4rem;
   opacity: .5;
   font-weight: 400;
@@ -17,6 +17,8 @@
   font-family: monospace;
   outline: none;
   padding: 10px;
-  background-color: var(--color-bg);
+  background-color: var(--color-surface);
   color: var(--color-text);
+  border: none;
+  border-radius: 6px;
 }

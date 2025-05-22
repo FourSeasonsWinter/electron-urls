@@ -8,7 +8,7 @@ if (started) {
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
-    width: 480,
+    width: 460,
     height: 600,
     maximizable: false,
     resizable: false,
@@ -18,7 +18,7 @@ const createWindow = () => {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
-      nodeIntegration: false
+      nodeIntegration: false,
     },
   })
 
@@ -51,6 +51,18 @@ app.on('activate', () => {
 // code. You can also put them in separate files and import them here.
 ipcMain.handle('fetch-from-node', async (_event, url, options) => {
   const res = await fetch(url, options)
-  const data = await res.json()
-  return data
+  const contentType = res.headers.get('content-type')
+  let body
+
+  if (contentType && contentType.includes('application/json')) {
+    body = await res.json()
+  } else [
+    body = await res.text()
+  ]
+
+  return {
+    status: res.status,
+    headers: Object.fromEntries(res.headers.entries()),
+    body
+  }
 })
